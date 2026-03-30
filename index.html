@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chitra's Portfolio</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cream:   '#F5F5F7',
+            ivory:   '#EBEBED',
+            blush:   '#D2D2D7',
+            rose:    '#0071E3',
+            muted:   '#86868B',
+            ink:     '#1D1D1F',
+            inksoft: '#515154',
+          },
+          fontFamily: {
+            display: ['Cormorant Garamond', 'Georgia', 'serif'],
+            mono:    ['JetBrains Mono', 'monospace'],
+            sans:    ['Lato', 'sans-serif'],
+          },
+          transitionTimingFunction: {
+            silk: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    /* fade-up — JS adds .visible */
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.25,0.1,0.25,1), transform 0.7s cubic-bezier(0.25,0.1,0.25,1); }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* nav underline pseudo-element — no Tailwind equivalent */
+    .nav-link { position: relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:#0071E3; transition: width 0.3s cubic-bezier(0.25,0.1,0.25,1); }
+    .nav-link:hover::after { width:100%; }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #D2D2D7; border-radius: 2px; }
+    .dark ::-webkit-scrollbar-thumb { background: #2D2D2F; }
+
+    /* selection */
+    ::selection { background: #B3D4F5; color: #1D1D1F; }
+  </style>
+</head>
+
+<body class="bg-cream dark:bg-black min-h-screen font-sans font-light tracking-[0.01em] text-ink dark:text-[#F5F5F7] transition-colors duration-300">
+
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-cream/80 dark:bg-black/80 backdrop-blur-md border-b border-blush/50 dark:border-[#2D2D2F]/50">
+
+    <a href="#home" class="nav-link font-mono text-xs tracking-widest text-muted uppercase no-underline hover:text-rose transition-colors duration-200">Ch.B.</a>
+
+    <div class="flex items-center gap-3">
+      <a href="#home"     class="nav-link font-mono text-[0.6rem] tracking-[0.10em] uppercase text-muted no-underline hover:text-rose transition-colors duration-200">Home</a>
+      <a href="#projects" class="nav-link font-mono text-[0.6rem] tracking-[0.10em] uppercase text-muted no-underline hover:text-rose transition-colors duration-200">Projects</a>
+      <a href="#contact"  class="nav-link font-mono text-[0.6rem] tracking-[0.10em] uppercase text-muted no-underline hover:text-rose transition-colors duration-200">Contact</a>
+
+      <button id="darkToggle" aria-label="Toggle dark mode"
+        class="w-8 h-8 rounded-full border border-blush dark:border-[#2D2D2F] bg-transparent flex items-center justify-center cursor-pointer transition-all duration-300 text-muted hover:bg-ivory hover:border-rose hover:text-rose dark:text-[#6E6E73] dark:hover:bg-[#1C1C1E] dark:hover:border-[#2997FF] dark:hover:text-[#2997FF]">
+        <!-- Sun icon dark mode -->
+        <svg id="iconSun" class="hidden" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <!-- Moon icon light mode) -->
+        <svg id="iconMoon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <main class="max-w-3xl mx-auto px-6 md:px-8">
+
+    <section id="home" class="pt-36 pb-4 fade-up">
+      <h1 class="font-display font-light leading-[1.08] tracking-[-0.01em] text-6xl md:text-6xl text-ink dark:text-[#F5F5F7] mb-6">
+        Hey
+        I'm <em class="italic text-rose font-semibold" style="font-style:italic">Chitra.</em><br/>
+      </h1>
+      <p class="font-mono text-muted">on paper <span class="text-rose">Chittaranjan.</span></p>
+      <p class="font-mono text-sm text-muted tracking-wide mt-2 mb-0">
+        AI/ML Engineer &nbsp;·&nbsp; Full-Stack Dev
+      </p>
+    </section>
+
+    <section id="about" class="py-8 pb-6 fade-up">
+
+      <div class="flex items-center font-semibold bg gap-3 mb-10 text-rose font-mono text-[0.65rem] tracking-[0.22em] uppercase">
+        <span>About</span>
+        <div class="flex-1 h-px bg-blush dark:bg-[#2D2D2F]"></div>
+      </div>
+
+      <p class="font-mono text-ink dark:text-[#F5F5F7] text-sm leading-relaxed font-light text-muted">
+        I enjoy bringing my ideas into reality and understanding how systems work.</br>
+        Currently I'm focused on learning <span class="text-rose text-sm hover:font-semibold transition-all">AI/ML engineering</span> and <span class="text-rose text-sm hover:font-semibold transition-all">Data structures and algorithms </span>while actively working with <span class="text-rose text-sm hover:font-semibold transition-all">Full-Stack development.</span><br>
+        Additionally, I'm into <span class="text-rose text-sm hover:font-semibold transition-all">Web3</span> from early stage, hunting airdrops as a teen.
+      </p>
+
+    </section>
+
+        
+    <section id="techstack" class="py-6 pb-12 fade-up">
+      
+      <div class="flex items-center gap-3 mb-10 text-rose font-mono text-[0.65rem] font-semibold tracking-[0.22em] uppercase">
+        <span>Tech Stack</span>
+        <div class="flex-1 h-px bg-blush dark:bg-[#2D2D2F]"></div>
+      </div>
+
+      <p class="text-inksoft dark:text-[#A1A1A6] text-sm mb-8 leading-relaxed" style="max-width:50ch">
+        Languages I think in, tools I reach for,  and environments I'm building fluency in.
+      </p>
+
+      <div class="flex flex-wrap gap-2.5">
+        <span class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all cursor-default hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[2px_2px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">Python</span>
+        <span class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all cursor-default hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[2px_2px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">SQL</span>
+        <span class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all cursor-default hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[2px_2px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">PostgreSQL</span>
+        <span class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all cursor-default hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[2px_2px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">HTML</span>
+        <span class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all cursor-default hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[2px_2px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">CSS</span>
+        <span class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all cursor-default hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[2px_2px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">Tailwind CSS</span>
+        <span class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all cursor-default hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[2px_2px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">FastAPI</span>
+        <span class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all cursor-default hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[2px_2px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">Pandas</span>
+        <span class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all cursor-default hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[2px_2px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">Numpy</span>
+        <span class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all cursor-default hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[2px_2px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">Git</span>
+        <span class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all cursor-default hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[2px_2px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">GitHub</span>
+        <span class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all cursor-default hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[2px_2px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">Linux</span>
+      </div>
+      
+    </section>
+    
+        <section id="beyond" class="py-6 pb-12 fade-up" style="max-width: px;">
+    
+          <div class="flex items-center gap-3 mb-10 text-rose text-muted font-mono text-[0.65rem] font-semibold tracking-[0.22em] uppercase">
+            <span>Beyond</span>
+            <div class="flex-1 h-px bg-blush dark:bg-[#2D2D2F]"></div>
+          </div>
+    
+          <p class="font-mono dark:text-[#F5F5F7]  m-10 leading-relaxed text-sm">
+            <li>I'm actively documenting my <span class="text-rose hover:font-semibold transition-all">AI/ML</span> journey through daily updates, which helps me to stay consistent and accountable.</li><br>
+            <li>I build <span class="text-rose hover:font-semibold transition-all">AI powered micro SaaS</span> projects, focusing on solving real world problems and understanding user needs.</li><br>
+            <li>Additionally, I'm into <span class="text-rose hover:font-semibold transition-all">Web3 (cryptocurrency)</span> from early stage, which has strengthened my curiosity for emerging technologies.</li>
+          </p>
+    
+        </section>
+    
+    
+    <section id="projects" class="py-6 pb-12 fade-up">
+      
+      <div class="flex items-center gap-3 mb-10 text-rose font-mono text-[0.65rem] font-semibold tracking-[0.22em] uppercase">
+        <span>Projects</span>
+        <div class="flex-1 h-px bg-blush dark:bg-[#2D2D2F]"></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        <article class="bg-white dark:bg-[#161617] border border-blush dark:border-[#2D2D2F] rounded-xl p-7 transition-all shadow-[8px_8px_#0071e3] hover:shadow-[0px_0px_0px_#0071e3] group cursor-pointer">
+          <div class="flex justify-between items-start mb-3">
+            <span class="font-mono text-xs text-muted tracking-widest uppercase">frontend project</span>
+            <svg class="text-muted group-hover:text-rose transition-colors duration-200" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </div>
+          <h4 class="text-ink dark:text-white text-xl leading-snug">Nothing AI</h4>
+          <p class=" text-sm mt-2 font-semibold leading-relaxed">A SaaS chatbot concept website focused on visually minimal design and user experience.</p>
+          <div class="flex gap-2 mt-4 flex-wrap">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.65rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all duration-300 cursor-default hover:bg-rose hover:border-rose hover:text-white">HTML</span>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.65rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all duration-300 cursor-default hover:bg-rose hover:border-rose hover:text-white">TailwindCSS</span>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.65rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all duration-300 cursor-default hover:bg-rose hover:border-rose hover:text-white">JS</span>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.65rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all duration-300 cursor-default hover:bg-rose hover:border-rose hover:text-white">Payment Integration</span>
+            <span class="w-full mt-2"><a href="#" target="_blank" class="inline-flex items-center rounded-full px-2 border text-xs font-mono text-rose hover:font-semibold transition-all">visit here-></a></span>
+          </div>
+        </article>
+
+      </div>
+
+    </section>
+
+<!-- for future updte
+    <section id="blogs" class="py-6 pb-12 fade-up">
+
+      <div class="flex items-center gap-3 mb-10 text-rose text-[0.65rem] font-semibold tracking-[0.22em] uppercase ">
+        <span>Blogs</span>
+        <div class="flex-1 h-px bg-blush dark:bg-[#2D2D2F]"></div>
+      </div>
+
+      <div class="space-y-5">
+
+        <a href="#" class="group flex justify-between items-start py-5 border-b border-blush dark:border-[#2D2D2F] hover:border-rose dark:hover:border-rose transition-colors duration-300 no-underline">
+          <div>
+            <p class="font-mono text-xs text-muted tracking-widest uppercase mb-2">xx 2026</p>
+            <h4 class="text-ink dark:text-[#F5F5F7] font-display text-xl font-light group-hover:text-rose transition-colors duration-200">
+              Blah Blah Blah...
+            </h4>
+          </div>
+          <svg class="text-muted group-hover:text-rose transition-colors duration-200 shrink-0 mt-1 ml-4" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+          </svg>
+        </a>
+
+      </div>
+
+    </section> -->
+
+
+    <section id="contact" class="py-6 pb-24 fade-up">
+
+      <div class="flex items-center gap-3 mb-10 text-rose font-mono text-[0.65rem] font-semibold tracking-[0.22em] uppercase">
+        <span>Contact</span>
+        <div class="flex-1 h-px bg-blush dark:bg-[#2D2D2F]"></div>
+      </div>
+
+      <p class="text-inksoft dark:text-[#A1A1A6] text-sm leading-relaxed mb-10" style="max-width:45ch">
+        Open to internships, collaborations, and interesting conversations.
+        Reach me through any of the links below.
+      </p>
+
+      <div class="flex flex-wrap gap-3">
+        <a href="mailto:gmail.chitra@gmail.com" class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all duration-300 cursor-default hover:-translate-y-0.5 hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[3px_3px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">
+          ✉&nbsp;gmail.chitra@gmail.com
+        </a>
+        <a href="https://github.com/0xchitra" target="_blank" rel="noopener" class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all cursor-default hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[3px_3px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">GitHub ↗</a>
+        <a href="https://x.com/0xchitra" target="_blank" rel="noopener" class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all cursor-default hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[3px_3px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">Twitter ↗</a>
+        <a href="https://www.linkedin.com/in/chittaranjanbora/" target="_blank" rel="noopener" class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all cursor-default hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[3px_3px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">LinkedIn ↗</a>
+        <a href="https://www.threads.com/@0xchitra" target="_blank" rel="noopener" class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all cursor-default hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[3px_3px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">Thread ↗</a>
+        <a href="https://bsky.app/profile/0xchitra.bsky.social" target="_blank" rel="noopener" class="inline-flex items-center px-3.5 py-1.5 rounded-full border border-blush bg-white dark:bg-[#1C1C1E] dark:border-[#2D2D2F] font-mono text-[0.72rem] tracking-[0.06em] text-[#424245] dark:text-[#A1A1A6] transition-all cursor-default hover:bg-rose hover:border-rose hover:text-white dark:hover:bg-[#0071E3] dark:hover:text-white shadow-[3px_3px_#0071e3] hover:shadow-[0_5px_15px_#0071e3]">BlueSky ↗</a>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-blush dark:border-[#2D2D2F] py-6 px-6 md:px-8">
+    <div class="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-3">
+      <p class="font-mono text-xs text-muted tracking-widest">© 2026 Chitra · All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    /* Dark mode toggle */
+    const html     = document.documentElement;
+    const toggle   = document.getElementById('darkToggle');
+    const iconSun  = document.getElementById('iconSun');
+    const iconMoon = document.getElementById('iconMoon');
+    const DARK_KEY = 'portfolio-dark';
+
+    function applyDark(on) {
+      html.classList.toggle('dark', on);
+      document.body.style.backgroundColor = on ? '#000000' : '#F5F5F7';
+      document.body.style.color           = on ? '#F5F5F7' : '#1D1D1F';
+      iconSun.classList.toggle('hidden', !on);
+      iconMoon.classList.toggle('hidden', on);
+      localStorage.setItem(DARK_KEY, on ? '1' : '0');
+    }
+
+    const saved      = localStorage.getItem(DARK_KEY);
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyDark(saved !== null ? saved === '1' : prefersDark);
+
+    toggle.addEventListener('click', () => applyDark(!html.classList.contains('dark')));
+
+
+    /* Intersection Observer → fade-up */
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
